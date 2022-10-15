@@ -34,6 +34,11 @@ class Joblist extends Component
         //nothing to init here
     }
     
+    public function changeLocation()
+    {
+        error_log($this->location);
+    }
+    
     public function render()
     {
         $ret = null;
@@ -42,7 +47,6 @@ class Joblist extends Component
         $this->locations=['Anywhere'];
         foreach(Job::select('location')->distinct()->get() as $loc)
            array_push($this->locations,$loc->location);
-
 
         //THIS IS only demo, in the real-time with the big data. We must think about other solution :)
         
@@ -56,12 +60,22 @@ class Joblist extends Component
             $ret = Job::where('created_at','>=',$before);
         }
         
+        //query
         if($this->q_title)
         {
             if($ret)
                 $ret = $ret->where('title', 'like', '%' . $this->q_title . '%');
             else
                 $ret = Job::where('title', 'like', '%' . $this->q_title . '%');
+        }
+        
+        //location
+        if($this->location and $this->location!='Anywhere')
+        {
+            if($ret)
+                $ret = $ret->where('location', 'like', '%' . $this->location . '%');
+            else
+                $ret = Job::where('location', 'like', '%' . $this->location . '%');
         }
         
         //category
@@ -74,8 +88,7 @@ class Joblist extends Component
         }
         
         //job type
-        //if(count($this->atype)>0 and !in_array('Any',$this->atype) )
-        if(count($this->atype)>0)
+        if(count($this->atype)>0 and !in_array('Any',$this->atype) )
         {
             if($ret)
                 $ret = $ret->whereIn('type',$this->atype);
@@ -108,8 +121,6 @@ class Joblist extends Component
         }
         else
             $this->jobs = $ret;
-        
-        error_log('pass');
         
         return view('livewire.job.list');
     }
