@@ -70,8 +70,4 @@ DB_PASSWORD=
 <img src="https://i.ibb.co/vH5xPjQ/job-detail.png" alt="job-detail" border="0" />
 
 ## License
-<<<<<<< HEAD
 None
-=======
-None
->>>>>>> acf79114837cceb18941055edb5d90dacd54871b
