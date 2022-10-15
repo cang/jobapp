@@ -69,5 +69,9 @@ DB_PASSWORD=
 <img src="https://i.ibb.co/pfm0pW4/jobs.png" alt="jobs" border="0" />
 <img src="https://i.ibb.co/vH5xPjQ/job-detail.png" alt="job-detail" border="0" />
 
+- Filter jobs
+<img src="https://i.ibb.co/jG3Kf9Z/jobs3.png" alt="jobs3" border="0" />
+<img src="https://i.ibb.co/GRspfKL/jobs2.png" alt="jobs2" border="0" />
+
 ## License
 None
