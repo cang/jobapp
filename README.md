@@ -53,17 +53,21 @@ DB_PASSWORD=
 
 
 ### For Recruiters
+
 - Create Company
 <img src="https://i.ibb.co/Y32GqhW/company.png" alt="company" border="0" />
 <img src="https://i.ibb.co/wWvvJ8f/company-cu.png" alt="company-cu" border="0" />
+
 - Create Job
 <img src="https://i.ibb.co/KsMhtyS/job.png" alt="job" border="0" />
 <img src="https://i.ibb.co/G7gCXKy/job-cu.png" alt="job-cu" border="0" />
 
 ### For job Seekers
+
+
 - Find and view Jobs 
-<img src="https://i.ibb.co/vH5xPjQ/job-detail.png" alt="job-detail" border="0" />
 <img src="https://i.ibb.co/pfm0pW4/jobs.png" alt="jobs" border="0" />
+<img src="https://i.ibb.co/vH5xPjQ/job-detail.png" alt="job-detail" border="0" />
 
 ## License
 None
