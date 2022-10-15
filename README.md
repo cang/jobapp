@@ -4,6 +4,9 @@ JobApp is a simple job search app for job seekers and recruiters to meet with La
 ## Introduction - the project's aim
 The main purpose of this app is to learn and quickly learn about full stack Laravel developer and I also have to make request "Create 2 3 pages with PHP, Laravel and MySQL"
 
+- [Demo link for Recruiters] (https://jobapp-cang.herokuapp.com/admin)
+- [Demo link for Job Seekers](https://jobapp-cang.herokuapp.com)
+
 ## Technologies
 - Laravel 9.35.1
 - Livewire 2.10.7
@@ -49,7 +52,7 @@ DB_PASSWORD=
 - Recruiters will using link http://localhost:8000/admin in order to create new companies, jobs
 - Job Seeker will using link http://localhost:8000 to find jobs
 
-## Screenshoot
+## Screenshoot and demo link
 
 
 ### For Recruiters
@@ -63,7 +66,6 @@ DB_PASSWORD=
 <img src="https://i.ibb.co/G7gCXKy/job-cu.png" alt="job-cu" border="0" />
 
 ### For job Seekers
-
 
 - Find and view Jobs 
 <img src="https://i.ibb.co/pfm0pW4/jobs.png" alt="jobs" border="0" />
