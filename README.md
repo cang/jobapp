@@ -4,7 +4,7 @@ JobApp is a simple job search app for job seekers and recruiters to meet with La
 ## Introduction - the project's aim
 The main purpose of this app is to learn and quickly learn about full stack Laravel developer and I also have to make request "Create 2 3 pages with PHP, Laravel and MySQL"
 
-- [Demo link for Recruiters] (https://jobapp-cang.herokuapp.com/admin)
+- [Demo link for Recruiters](https://jobapp-cang.herokuapp.com/admin)
 - [Demo link for Job Seekers](https://jobapp-cang.herokuapp.com)
 
 ## Technologies
