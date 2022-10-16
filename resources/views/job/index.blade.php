@@ -6,7 +6,12 @@
                 <div class="pull-left">
                 </div>
                 <div class="pull-right mb-2">
-                    <a class="btnp btn-outline-primary" href="{{ route('job.create') }}"> Create Job</a>
+                    @if($company!=null) 
+                        <h4>Company : {{$company->name}}</h4>
+                        <a class="btnp btn-outline-primary" href="{{ route('job.create') . '?c_id=' . $company->id }}"> Create Job</a>
+                    @else
+                        <a class="btnp btn-outline-primary" href="{{ route('job.create') }}"> Create Job</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -53,13 +58,18 @@
                         <td>{{ $job->type }}</td>
                         <td>{{ $job->vacancy }}</td>
                         <td>
-                            <form action="{{ route('job.destroy',$job->id) }}" method="Post">
+                            <form action="{{ route('job.destroy',$job->id) }}" method="Post" >
                                 
-                                <a class="btn btn-success btn-sm rounded-0" href="{{ route('job.edit',$job->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-edit"></i>Edit</a>
+                                @if($company!=null) 
+                                    <a class="btn btn-success btn-sm rounded-0" href="{{ route('job.edit',$job->id) . '?c_id=' . $company->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-edit"></i>Edit</a>
+                                @else
+                                    <a class="btn btn-success btn-sm rounded-0" href="{{ route('job.edit',$job->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-edit"></i>Edit</a>
+                                @endif
                                 
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i> Delete</button>
+                                
                             </form>
                         </td>
                     </tr>

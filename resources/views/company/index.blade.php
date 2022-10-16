@@ -37,7 +37,7 @@
                         <td>
                             <form action="{{ route('company.destroy',$company->id) }}" method="Post">
                                 
-                                <a class="btn btn-success btn-sm rounded-0" href="{{ route('job.index',$company->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jobs"><i class="fa fa-tasks"></i>Jobs</a>
+                                <a class="btn btn-success btn-sm rounded-0" href="/admin/job?c_id={{$company->id}}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Jobs"><i class="fa fa-tasks"></i>Jobs</a>
                                 
                                 <a class="btn btn-success btn-sm rounded-0" href="{{ route('company.edit',$company->id) }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-edit"></i>Edit</a>
                                 

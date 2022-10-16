@@ -15,6 +15,13 @@ class JobController extends Controller
     private $jobtypes = ['Any','Full-time', 'Part-time','Internship','Remote','Freelance'];
 
 
+    private function getCompanyFromParams(Request $request)
+    {
+        if(isset($request->c_id))
+            return Company::find($request->c_id);
+        return null;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -22,21 +29,31 @@ class JobController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) {
-        $jobs = Job::orderBy('id','desc')->paginate(20);
-        return view('job.index', compact('jobs'));
+        $company = $this->getCompanyFromParams($request);
+        if($company)
+        {
+            $jobs =Job::where('company_id',$company->id)->orderBy('id','desc')->paginate(20);
+            return view('job.index', array_merge(compact('jobs'),['company'=> $company]));
+        }
+        else
+        {
+            $jobs = Job::orderBy('id','desc')->paginate(20);
+            return view('job.index', array_merge(compact('jobs'),['company'=> null]));
+        }
     }
 
-    /** 
+    /**  
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($companyid=null) {
+    public function create(Request $request) {
         //$this->authorize('admin', User::class);
         return view('job.create', ['companies' => Company::latest()->get(['id','name'])
             ,"positions" => $this->positions
             ,"categories"=> $this->categories
             ,"jobtypes"=> $this->jobtypes
+            ,"company"=> $this->getCompanyFromParams($request)
             ]);
     }
     
@@ -57,22 +74,14 @@ class JobController extends Controller
             'vacancy' => 'required|numeric|min:0|not_in:0' ,
             'salary' => 'required|numeric|min:0|not_in:0' ,
         ]); 
-
-
-        // echo '<pre>';
-        // var_dump($request);
-        // echo '</pre>';
-
-/*      $job = new Job;
-        $job->position = $request->position;
-        $job->company_id = $request->company_id;
-        $job->save(); 
-        return redirect()->route('job.show', [ 'job' => $job->id ]);
-*/
-
+        
         $job = $request->post();
         Job::create($job);
-        return redirect()->route('job.index')->with('success','Job has been created successfully.'); 
+        
+        if(isset($request->c_id))
+            return redirect()->route('job.index',["c_id" => $request->c_id])->with('success','Job has been created successfully.');
+        else
+            return redirect()->route('job.index')->with('success','Job has been created successfully.'); 
     }
 
     /**
@@ -81,13 +90,14 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job)
+    public function edit(Job $job,Request $request)
     {
          return view('job.edit',array_merge(compact('job'),
             ['companies' => Company::latest()->get(['id','name'])
             ,"positions" => $this->positions
             ,"categories"=> $this->categories
             ,"jobtypes"=> $this->jobtypes
+            ,"company"=> $this->getCompanyFromParams($request)
             ]));
     }
 
@@ -101,7 +111,11 @@ class JobController extends Controller
     public function update(Request $request, Job $job) {
         $update_job = $request->post();
         $job->fill($update_job)->save();
-        return redirect()->route('job.index')->with('success','Job Has Been updated successfully');
+        
+        if(isset($request->c_id))
+            return redirect()->route('job.index',["c_id" => $request->c_id])->with('success','Job Has Been updated successfully');
+        else
+            return redirect()->route('job.index')->with('success','Job Has Been updated successfully');
     }
 
     /**
@@ -113,7 +127,11 @@ class JobController extends Controller
     public function destroy(Job $job)     
     {
         $job->delete();
-        return redirect()->route('job.index')->with('success','Job has been deleted successfully');
+        
+        if(isset($request->c_id))
+            return redirect()->route('job.index',["c_id" => $request->c_id])->with('success','Job has been deleted successfully');
+        else
+            return redirect()->route('job.index')->with('success','Job has been deleted successfully');
     }
     
     public function detail($id) 

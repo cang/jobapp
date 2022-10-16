@@ -13,7 +13,11 @@
                     <h2>Add Job</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btnp btn-primary" href="{{ route('job.index') }}"> Back</a>
+                    @if($company!=null) 
+                        <a class="btnp btn-primary" href="{{ route('job.index') . '?c_id=' . $company->id }}"> Back</a>
+                    @else
+                        <a class="btnp btn-primary" href="{{ route('job.index') }}"> Back</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -27,15 +31,17 @@
         <form action="{{ route('job.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
-           
             <div class="row">
-            
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                     <strong>Company:</strong><br>
                     <select class="selectpicker" data-live-search="true" name="company_id" id="company_id">
-                        @foreach ($companies as $company)
-                            <option data-tokens="{{$company->id}}" value="{{$company->id}}" >{{$company->name}}</option>
+                        @foreach ($companies as $company1)
+                            @if($company!=null) 
+                                <option data-tokens="{{$company1->id}}" value="{{$company1->id}}" @if($company->id==$company1->id) selected @endif >{{$company1->name}}</option>
+                            @else
+                                <option data-tokens="{{$company1->id}}" value="{{$company1->id}}">{{$company1->name}}</option>
+                            @endif
                         @endforeach
                     </select>
                     </div>
@@ -134,6 +140,9 @@
                 <button type="submit" class="btnp btn-primary ml-3">Submit</button>
                 <div class="col-xs-12 col-sm-12 col-md-12"></div>
                 <div class="col-xs-12 col-sm-12 col-md-12"></div>                
+                @if($company!=null) 
+                    <input type="hidden" id="c_id" name="c_id" value="{{$company->id}}">
+                @endif
             </div>
             
         </form>

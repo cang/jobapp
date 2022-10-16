@@ -15,8 +15,11 @@
                     <h2>Edit Job</h2>
                 </div>
                 <div class="pull-right">
-                    <a class="btnp btn-primary" href="{{ route('job.index') }}" enctype="multipart/form-data">
-                        Back</a>
+                    @if($company!=null) 
+                        <a class="btnp btn-primary" href="{{ route('job.index') . '?c_id=' . $company->id }}" enctype="multipart/form-data">Back</a>
+                    @else
+                        <a class="btnp btn-primary" href="{{ route('job.index') }}" enctype="multipart/form-data">Back</a>
+                    @endif
                 </div>
             </div>
         </div>
@@ -35,9 +38,9 @@
                     <div class="form-group">
                     <strong>Company:</strong><br>
                     <select class="selectpicker" data-live-search="true" name="company_id" id="company_id">
-                        @foreach ($companies as $company)
-                            <option value="{{$company->id}}" data-tokens="{{$company->id}}" @if($job->company_id==$company->id) selected @endif
-                            >{{$company->name}}</option>
+                        @foreach ($companies as $company1)
+                            <option value="{{$company1->id}}" data-tokens="{{$company1->id}}" @if($job->company_id==$company1->id) selected @endif
+                            >{{$company1->name}}</option>
                         @endforeach
                     </select>
                     </div>
@@ -131,7 +134,11 @@
                 
                 <button type="submit" class="btnp btn-primary ml-3">Submit</button>
                 <div class="col-xs-12 col-sm-12 col-md-12"></div>
-                <div class="col-xs-12 col-sm-12 col-md-12"></div>                
+                <div class="col-xs-12 col-sm-12 col-md-12"></div>  
+
+                @if($company!=null) 
+                    <input type="hidden" id="c_id" name="c_id" value="{{$company->id}}">
+                @endif                
             </div>
         </form>
 

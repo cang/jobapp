@@ -26,7 +26,3 @@ Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::resource('/admin/company', 'CompanyController');
 Route::resource('/admin/job', 'JobController');
-Route::get('/admin/job/create/{companyid?}', 'JobController@create');
-
-//Route::resource('/admin/jobcategory', 'JobCategoryController');
-
