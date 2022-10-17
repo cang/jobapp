@@ -56,14 +56,14 @@
                          <!-- Form -->
                          <div class="footer-form" >
                              <div id="mc_embed_signup">
-                                 <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                                 <form target="_blank" action="#"
                                  method="get" class="subscribe_form relative mail_part">
                                      <input type="email" name="email" id="newsletter-form-email" placeholder="Email Address"
                                      class="placeholder hide-on-focus" onfocus="this.placeholder = ''"
                                      onblur="this.placeholder = ' Email Address '">
                                      <div class="form-icon">
                                          <button type="submit" name="submit" id="newsletter-submit"
-                                         class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                         class="email_icon newsletter-submit button-contactForm"><img src="{{ asset('assets/img/icon/form.png') }}" alt=""></button>
                                      </div>
                                      <div class="mt-10 info"></div>
                                  </form>
@@ -78,7 +78,7 @@
                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
                       <!-- logo -->
                       <div class="footer-logo mb-20">
-                        <a href="index.html"><img src="assets/img/logo/logo2_footer.png" alt=""></a>
+                        <a href="index.html"><img src="{{ asset('assets/img/logo/logo2_footer.png') }}" alt=""></a>
                       </div>
                    </div>
                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5">

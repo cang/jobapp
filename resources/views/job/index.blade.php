@@ -22,28 +22,15 @@
             </div>
         @endif
         
-<!--        
-        <div class="row">       
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Company:</strong>
-                    <input type="text" name="name" class="form-control" placeholder="Company Name">
-                    @error('name')
-                    <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-                    @enderror
-                </div>
-            </div>        
-        </div>                
--->
-        
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Title</th>
                     <th>Category</th>
                     <th>Position</th>
+                    <th>Company</th>
                     <th>type</th>
-                    <th>vacancy</th>
+<!--                    <th>vacancy</th>    -->
 <!--                    <th>salary</th> -->
 <!--                    <th>Date</th> -->
                     <th width="280px">Action</th>
@@ -55,10 +42,11 @@
                         <td>{{ $job->title }}</td>
                         <td>{{ $job->category }}</td>
                         <td>{{ $job->position }}</td>
+                        <td>{{ $job->company->name }}</td>
                         <td>{{ $job->type }}</td>
-                        <td>{{ $job->vacancy }}</td>
                         <td>
-                            <form action="{{ route('job.destroy',$job->id) }}" method="Post" >
+                            <form action="{{ route('job.destroy',$job->id) }}" method="Post">
+                                @csrf
                                 
                                 @if($company!=null) 
                                     <a class="btn btn-success btn-sm rounded-0" href="{{ route('job.edit',$job->id) . '?c_id=' . $company->id }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fa fa-edit"></i>Edit</a>
@@ -69,6 +57,10 @@
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" onclick="return confirm('Are you sure?')"><i class="fa fa-trash"></i> Delete</button>
+                                
+                                @if($company!=null) 
+                                    <input type="hidden" id="c_id" name="c_id" value="{{$company->id}}">
+                                @endif
                                 
                             </form>
                         </td>

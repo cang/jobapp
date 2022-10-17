@@ -90,7 +90,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Job $job,Request $request)
+    public function edit(Request $request,Job $job)
     {
          return view('job.edit',array_merge(compact('job'),
             ['companies' => Company::latest()->get(['id','name'])
@@ -124,7 +124,7 @@ class JobController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Job $job)     
+    public function destroy(Request $request,Job $job)     
     {
         $job->delete();
         
