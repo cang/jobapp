@@ -20,7 +20,7 @@ class Joblist extends Component
     
     public $maxsalary;
     
-    public $sortby;
+    public $sortby="created_at";
     
     public $posttimes=[false,false,false,false,false,false];
     
