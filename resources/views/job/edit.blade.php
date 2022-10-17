@@ -100,27 +100,35 @@
               
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Experience:</strong><br>
-                        <input type="number" id="experience" name="experience" min="0" value="{{$job->experience}}">
+                        <label class="form-label" for="experience"><strong>Number of years of experience</strong></label>
+                        <input type="number" id="experience" class="form-control"  name="experience" min="0" value='{{$job->experience}}'>
+                    @error('experience')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror
+                    
                     </div>
-                </div>
+                </div>                
                 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Vacancy:</strong><br>
-                        <input type="number" id="vacancy" name="vacancy" min="0" value="{{$job->vacancy}}">
+                        <label class="form-label" for="vacancy"><strong>Number of vacancies available :</strong></label>
+                        <input type="number" id="vacancy" class="form-control" name="vacancy" min="0" value="{{$job->vacancy}}">
+                    @error('vacancy')
+                        <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+                    @enderror                        
                     </div>
-                </div>
+                </div>                
                 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Salary:</strong><br>
-                        <input type="number" id="salary" name="salary" min="0" value="{{$job->salary}}">
+                        <label class="form-label" for="salary"><strong>Salary:</strong></label>
+                        <input type="number" id="salary" class="form-control" name="salary" min="0" value="{{$job->salary}}">
                         @error('salary')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
+               
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Job Description:</strong>

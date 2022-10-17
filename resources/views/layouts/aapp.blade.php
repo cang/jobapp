@@ -7,8 +7,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">   
   <meta name="description" content="">
 <!--   <link rel="manifest" href="site.webmanifest"> -->
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">  
-  
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">  
   
   <!-- CSS here -->
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
@@ -67,7 +66,7 @@
 <!-- Jquery Plugins, main Jquery -->	
 <script src="{{ asset('assets/js/plugins.js') }}"></script>
 
-<script src="{{ asset('assets/js/main.js') }}"></script>
+
 
   <title>
     @section('title')
@@ -78,6 +77,8 @@
 
 
 <body>
+    <script src="{{ asset('assets/js/main.js') }}"></script>
+    
   @include('components.aheader')
   
   <main>

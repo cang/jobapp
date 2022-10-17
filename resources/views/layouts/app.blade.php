@@ -7,11 +7,10 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">   
   <meta name="description" content="">
 <!--   <link rel="manifest" href="site.webmanifest"> -->
-  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">  
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/favicon.ico') }}">  
   
   <!-- CSS here -->
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
   
     <link rel="stylesheet" href="{{ asset('assets/css/owl.carousel.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
@@ -26,31 +25,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     
     
-    <script src="{{ asset('assets/js/main.js') }}"></script>
-
-  <title>
-    @section('title')
-      {{ config('app.name', 'Laravel') }}
-    @show
-  </title>
-  
-  @livewireStyles
-</head>
-
-<body>
-  <x-header />
-  
-  <main>
-
-  @yield('content')
-  
-  </main>
-
-  <x-footer />
-  
-<!-- JS here -->
-<script src="{{ asset('js/app.js') }}" crossorigin="anonymous"></script>
-  
 <!-- All JS Custom Plugins Link Here here -->
 <script src="{{ asset('assets/js/vendor/modernizr-3.5.0.min.js') }}"></script>
 
@@ -84,7 +58,35 @@
 <script src="{{ asset('assets/js/jquery.ajaxchimp.min.js') }}"></script>
 
 <!-- Jquery Plugins, main Jquery -->	
-<script src="{{ asset('assets/js/plugins.js') }}"></script>    
+<script src="{{ asset('assets/js/plugins.js') }}"></script>   
+
+ 
+    
+
+  <title>
+    @section('title')
+      {{ config('app.name', 'Laravel') }}
+    @show
+  </title>
+  
+  @livewireStyles
+</head>
+
+<body>
+    <script src="{{ asset('assets/js/main.js') }}"></script>    
+    
+  <x-header />
+  
+  <main>
+
+  @yield('content')
+  
+  </main>
+
+  <x-footer />
+  
+ 
+
 
   
   @livewireScripts

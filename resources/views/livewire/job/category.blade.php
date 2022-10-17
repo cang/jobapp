@@ -3,7 +3,7 @@
 </div>
 <!-- Select job items start -->
 <div class="select-job-items2">
-    <select name="category" id="category" wire:model="category">
+    <select name="category" class="form-control" id="category" wire:model="category">
         @foreach ($categories as $category)
             <option value="{{$category}}">{{$category}}</option>
         @endforeach    

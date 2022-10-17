@@ -91,7 +91,7 @@
                         <strong>Job Nature :</strong><br>
                         @foreach ($jobtypes as $jobtype)
                         <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" name="type" id="{{$jobtype}}" value="{{$jobtype}}"  @if($jobtype==='Any') checked @endif>
+                          <input class="btn-check" type="radio" name="type" id="{{$jobtype}}" value="{{$jobtype}}"  @if($jobtype==='Any') checked @endif>
                           <label class="form-check-label" for="{{$jobtype}}">{{$jobtype}}</label>
                         </div>
                         @endforeach
@@ -100,18 +100,19 @@
               
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Experience:</strong><br>
-                        <input type="number" id="experience" name="experience" min="0" value='0'>
+                        <label class="form-label" for="experience"><strong>Number of years of experience</strong></label>
+                        <input type="number" id="experience" class="form-control"  name="experience" min="0" value='0'>
                     @error('experience')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror
+                    
                     </div>
                 </div>
                 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Vacancy:</strong><br>
-                        <input type="number" id="vacancy" name="vacancy" min="0" value='0'>
+                        <label class="form-label" for="vacancy"><strong>Number of vacancies available :</strong></label>
+                        <input type="number" id="vacancy" class="form-control" name="vacancy" min="0" value='0'>
                     @error('vacancy')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                     @enderror                        
@@ -120,8 +121,8 @@
                 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Salary:</strong><br>
-                        <input type="number" id="salary" name="salary" min="0" value='0'>
+                        <label class="form-label" for="salary"><strong>Salary:</strong></label>
+                        <input type="number" id="salary" class="form-control" name="salary" min="0" value='0'>
                         @error('salary')
                         <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                         @enderror

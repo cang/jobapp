@@ -61,7 +61,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="count-job mb-35">
-                                <span>{{$jobs->count()}} Jobs found</span>
+                                <span><strong>{{$jobs->count()}} Jobs found</strong></span>
                                 @include('livewire.job.sortby')
                             </div>
                         </div>

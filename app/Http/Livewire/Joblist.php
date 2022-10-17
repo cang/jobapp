@@ -51,13 +51,15 @@ class Joblist extends Component
         //THIS IS only demo, in the real-time with the big data. We must think about other solution :)
         
         //time filter
-        $timebefore = $this->getTimeBefore(); 
-        if($timebefore>=0)
+        $timeafter = $this->getTimeBefore(); 
+        if($timeafter>=0)
         {
-            $before = Carbon::now();
-            if($timebefore>0)
-                $before = $before->subDays($timebefore);
-            $ret = Job::where('created_at','>=',$before);
+            $after = Carbon::now();
+            if($timeafter==0)
+                $after = $after->startOfDay();
+            else
+                $after = $after->subDays($timeafter);
+            $ret = Job::where('created_at','>=',$after);
         }
         
         //query
